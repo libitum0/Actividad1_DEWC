@@ -71,10 +71,11 @@ function calcularMedia(listaN){
 //función para calcular la moda de un array de valores	
 function calcularModa(listaN){
 	let posicion = 0
-	let maximo = 0
+	let maximo = 0 
 	let listaNorden = ordenaLista(listaN) //ordena el array
 	let listaRepetidos =[]
-
+	let numrep=0
+		listaRepetidos[0]=1
 		for (let i=1; i<listaNorden.length;i++){
 			if (listaNorden[i-1]==listaNorden[i]){
 				numrep++
@@ -87,23 +88,19 @@ function calcularModa(listaN){
 			}
 			else{
 			numrep =1
-			//listaRepetidos[i-1] =numrep
 			listaRepetidos[i] =numrep
 			}
 		}
-		listaRepetidos[0]=1
-		if (maximo == 0){
-			console.log("no hay moda")
+		
+		if ((maximo == 1)||(maximo==0)){
+			return("no hay moda")
 		}
 		else{
-			console.log(listaRepetidos)
-			console.log ("yo soy la moda "+listaordenados[posicion])
-			console.log ("y me he repetido " +maximo)
+			return(listaordenados[posicion])
 	}
 
 }
-
-
+console.log ("la moda es: "+calcularModa(listaNorden))
 
 //funcion para calcular la mediana de un array de valores
 function calcularMediana(listaN){
