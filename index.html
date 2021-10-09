@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Moda-Media-Mediana</title>
+
+	<script type="text/javascript">
+	
+	let listaNorden = [] //Aray que almacena la lista de números introducidos por teclado
+	let media=0
+
+//función que pide los datos por teclado y almacenarlos en un array
+function pedirDatos(){
+
+	let indice=0; //almacena el total de números introducidos
+	let listaNumeros = [] //Aray que almacena la lista de números introducidos por teclado
+
+    while(indice<=9) {
+
+	let numero=prompt("Introduce un número entre 0 y 100");
+
+		if ((parseInt(numero) >=0) && (parseInt(numero) <=100)){
+	   		listaNumeros[indice] = parseInt(numero)
+			indice++
+   		}else{   		
+	   		alert("Número fuera de rango, prueba con otro entre 0 y 100")
+   		}
+	
+	}
+	return (listaNumeros);
+}
+
+	listaN = pedirDatos()
+	console.log(listaN) //muestra los datos instroducidos
+
+//Ordena los números en el array
+
+function ordenaLista(listaN){
+	listaordenados =listaN.sort((a,b)=>{
+			if (a==b){
+				return 0;
+			}
+			if (a<b){
+				return -1
+			}else{
+				return 1
+			}
+		})
+		return(listaordenados)
+}
+
+	listaNorden=ordenaLista(listaN);
+	console.log(listaNorden) //muestra el array con los valores ordenaros de manera ascendente
+
+//función que calcula la media de un array de números
+function calcularMedia(listaN){ 
+
+	let suma=0;
+	for (let i=0;i<listaN.length;i++){
+		suma += listaN[i]
+	}
+	
+	return suma/listaN.length
+}
+
+	media = calcularMedia(listaN)
+	console.log ("La moda es: "+media) //muestra la media de los valores almacenados en el array
+
+//función para calcular la moda de un array de valores	
+function calcularModa(listaN){
+	let posicion = 0
+	let maximo = 0
+	let listaNorden = ordenaLista(listaN) //ordena el array
+	let listaRepetidos =[]
+
+		for (let i=1; i<listaNorden.length;i++){
+			if (listaNorden[i-1]==listaNorden[i]){
+				numrep++
+		    	listaRepetidos[i] =numrep
+				//calcular el que más se repite
+				if (maximo< listaRepetidos[i]){
+				maximo= listaRepetidos[i]
+				posicion =i
+			}
+			}
+			else{
+			numrep =1
+			//listaRepetidos[i-1] =numrep
+			listaRepetidos[i] =numrep
+			}
+		}
+		listaRepetidos[0]=1
+		if (maximo == 0){
+			console.log("no hay moda")
+		}
+		else{
+			console.log(listaRepetidos)
+			console.log ("yo soy la moda "+listaordenados[posicion])
+			console.log ("y me he repetido " +maximo)
+	}
+
+}
+
+
+
+//funcion para calcular la mediana de un array de valores
+function calcularMediana(listaN){
+	let listaNorden = ordenaLista(listaN)
+	let mediana = 0
+	let j=0
+	if (listaNorden.length %2 ==0){
+			j= listaNorden.length/2
+			return ((listaNorden[j-1]+listaNorden[j])/2)
+		}	
+		else{
+			j= (listaNorden.length+1)/2
+			return (listaNorden[j-1])
+		}	
+
+}
+		mediana = calcularMediana(listaN)
+		console.log("la mediana es: "+mediana)
+
+
+
+
+	</script>
+
+</head>
+
+
+<body>
+	<h1>Actividad 1: Media, Moda y Mediana </h1>
+	
+</body>
+</html>
